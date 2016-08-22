@@ -1,0 +1,14 @@
+
+
+//--altered attachments table--//
+ALTER TABLE `scrum`.`attachments`
+ADD COLUMN `name` VARCHAR(225) NULL AFTER `task_id`,
+ADD COLUMN `file` LONGBLOB NULL AFTER `name`,
+ADD COLUMN `mime` VARCHAR(225) NULL AFTER `file`,
+ADD COLUMN `size` INT UNSIGNED NULL AFTER `mime`;
+
+
+//-- altered tasks table added status and task_end  --//
+ALTER TABLE `scrum`.`tasks`
+ADD COLUMN `status` VARCHAR(225) NULL AFTER `description`,
+ADD COLUMN `task_end` DATETIME NULL AFTER `user_id`;

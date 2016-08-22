@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/Http/Controllers/ChatController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Http/Controllers/FileController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Http/Controllers/ProjectController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Http/Controllers/PublicController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Http/Controllers/SprintController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Http/Controllers/TaskController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Http/routes.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Models/Company.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Models/Province.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Models/Type/TaskStatus.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Models/Type/Type.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Models/Type/User.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/database/DB/countryProvince.sql" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/font-awesome-4.1.0" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/fonts" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/img" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/img/img.jpg" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/public/js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/less" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/layout.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/projects/add.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/projects/index.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/public" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/setting" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/shared" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/sprint/add.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/sprint/index.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/task/add.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/task/index.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/user" charset="UTF-8" />
+  </component>
+</project>

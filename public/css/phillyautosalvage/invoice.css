@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* CSS Document */
+
+.container { line-height: 26px; width: 950px;}
+.hd-bg { background-color: #eee; padding: 5px; margin: 12px 0px;}
+.txt15 { font-size: 15px;}
+.txt20 { font-size: 20px;}
+.txt25 { font-size: 25px;}
+.txt40 { font-size: 40px;}
+.txt50 { font-size: 50px;}
+
+.logo { padding-bottom: 30px;}
+.prodt-img { padding: 20px;}
+
+.bdr1 { border-top: #cccccc solid 8px; border-bottom: #cccccc solid 8px; overflow: hidden; padding-top: 15px; padding-bottom: 15px; }

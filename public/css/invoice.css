@@ -1,0 +1,20 @@
+
+
+* { margin: 0; padding: 0; }
+body { font: 14px/1.4 Georgia, serif; }
+#page-wrap { width: 800px; margin: 0 auto; }
+.container { max-width: 800px; }
+.invotop { background-color: #000; color: #fff; font-size: 30px; margin-bottom: 25px; text-align: right; padding: 4px 40px; }
+.invoicetoprht { display: inline-block; float: right; }
+.table.mrgbtm0 { margin-bottom: 0px;}
+.ftrnote { font-size: 10px; margin-top: 50px;}
+#page-wrap  { z-index: 9999!important; background-color: #fff;}
+
+.panel-body {
+    padding: 0px 15px 15px 15px;
+}
+
+.vehiclesect, .descrpsect { margin-top: 20px; margin-bottom: 20px;}
+.vehiclesect  { border-top: #eeeeee solid 1px;}
+.descrpsect {border-bottom: #eeeeee solid 1px;  padding-bottom: 10px;}
+.img-logo {max-height: 50px !important; max-width: 250px !important;}
