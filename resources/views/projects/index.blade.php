@@ -3,14 +3,15 @@
 <div class="row">
     <div class="col-lg-12 ">
         <h1 class="page-header">Projects
-                    
-            
+
+            @if(\Auth::user()->type=='Admin')
             <a class="btn btnpd0 btn-labeled btn-success  pull-right" href='/project/add'>
                 <span class="btn-label">
                     <i class="fa fa-plus-circle"></i>
                 </span>
                 Add Project
             </a>
+            @endif
            </h1>         
     </div>
 </div>
@@ -23,7 +24,9 @@
                 <table class="table table-striped table-bordered table-hover" id='dataTables'>
                     <thead>
                         <tr>
-                            <th width="65"></th>
+                            @if(\Auth::user()->type=='Admin')
+                            <th width="70"></th>
+                            @endif
                             <th>Name</th>
                             <th>Description</th>
                             <th>Members</th>
@@ -36,12 +39,14 @@
 
                         @foreach ($projects as $project)
                         <tr>
+                            @if(\Auth::user()->type=='Admin')
                             <td>
 
                                 <a class="btn btn-primary btn-xs" href="/project/edit/{{$project->id}}"><i class="fa fa-pencil"></i></a>
                                 <a class="btn btn-danger btn-xs" href='project/delete/{{$project->id}}' data-toggle='modal' data-target='#modal'><i class="fa fa-times"></i></a>
 
                             </td>
+                            @endif
                            
                            
                             <td>{{$project->name }}</td>

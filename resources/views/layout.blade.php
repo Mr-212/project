@@ -22,6 +22,9 @@
     <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="/css/plugins/dataTables.bootstrap.css" rel="stylesheet">
     <link href="/css/plugins/dataTables.responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="/bower_components/angular-datatables/dist/css/angular-datatables.css">
+    <script src="/bower_components/ng-table/dist/ng-table.min.css"></script>
+    <link rel="stylesheet" type="text/css" href="/js/jtags/dist/jquery.tagsinput.min.css" />
 
     @yield('css')
 
@@ -61,8 +64,10 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="/user/profile/"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
+                        @if(\Auth::user()->type=='Admin')
                         <li><a href="/setting"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
+                        @endif
                         <li class="divider"></li>
                         <li><a href="/public/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
@@ -99,7 +104,7 @@
                             {{--</ul>--}}
                         </li>
 
-
+                        @if(\Auth::user()->type=='Admin')
                         <li><!--
 -->                            <a @if($active=='setting')class="active" @endif href="/setting"><i class="fa fa-gear fa-fw"></i> Settings</a><!--
                             
@@ -108,6 +113,7 @@
                         <li>
                             <a @if($active=='user')class="active" @endif href="/user"><i class="fa fa-user fa-fw"></i>Users</a>
                         </li>
+                         @endif
                        
                     </ul>
                 </div>
@@ -149,6 +155,9 @@
     <script src="/js/plugins/dataTables/dataTables.bootstrap.js"></script>
     <script src="/js/plugins/dataTables/dataTables.responsive.js"></script>
     <script src="/js/sb-admin-2.js"></script>
+    <script src="/js/jtags/dist/jquery.tagsinput.min.js"></script>
+
+    {{--<script src="/bower_components/jquery.countdown/dist/jquery.countdown.js"></script>--}}
 
 
 
@@ -161,6 +170,10 @@
     <script src="/bower_components/angular-route/angular-route.min.js"></script>
     {{--<script src="/bower_components/ng-scroll-glue/dist/ng-scroll-glue.js"></script>--}}
     <script src="/bower_components/angular-scroll-glue/src/scrollglue.js"></script>
+    <script src="/bower_components/angular-countdown/directive/countdownTimer.js"></script>
+    <script src="/bower_components/angular-datatables/dist/angular-datatables.min.js"></script>
+    {{--<script src="/bower_components/ng-table/changelog.js"></script>--}}
+    <script src="/bower_components/ng-table/dist/ng-table.min.js"></script>
     <script src="/angular/chat.js"></script>
 
 

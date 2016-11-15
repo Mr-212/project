@@ -12,14 +12,16 @@
 */
 
 
-Route::group(['middlewareGroups'=>'web'], function(){
+Route::group(['middleware'=>['web']], function(){
     Route::get('/', function () {
     return redirect('/public/login');
 });
-    Route::controller('public','PublicController');
+    Route::controller('public','PublicController',[
+        //'middleware' =>['guest'=>['except'=>'getLogout']]
+    ]);
 });
 
-Route::group(['middlewareGroups'=>['web', 'auth']], function(){
+Route::group(['middleware'=>['web', 'auth',]], function(){
     Route::controller('setting','CompanyController');
     Route::controller('user','UserController');
     Route::controller('project','ProjectController');

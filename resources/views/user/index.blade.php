@@ -23,7 +23,7 @@
                 <table class="table table-striped table-bordered table-hover" id='dataTables'>
                     <thead>
                         <tr>
-                            <th width="65"></th>
+                            <th width="70"></th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Company</th>

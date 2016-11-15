@@ -1,4 +1,11 @@
 @extends('layout',['active'=>'sprint'])
+@section('css')
+    <style type="text/css">
+        #discription,#members{
+            height: 100px;
+        }
+    </style>
+@stop
 @section('content')
            <div class="row col-md-offset-3">
                 <div class="col-lg-6 ">
@@ -16,7 +23,7 @@
                     </div>
                       <div class="form-group">
                             <label for=''>Description </label>
-                            {!! Form::text('description',!empty($sprint->description)?$sprint->description:'',['class' => 'form-control', 'required'=>'','placeholder'=>'Description' ]) !!}
+                            {!! Form::textarea('description',!empty($sprint->description)?$sprint->description:'',['id'=>'discription','class' => 'form-control', 'required'=>'','placeholder'=>'Description' ]) !!}
                         </div>
 
                     <div class="form-group">

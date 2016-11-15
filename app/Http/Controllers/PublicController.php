@@ -5,7 +5,10 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class PublicController extends Controller{
-    
+
+    public function __construct(){
+        $this->middleware('guest',['except'=>['getLogout']]);
+    }
     public function getLogin(){
         return view('public.login');
     }
@@ -20,7 +23,10 @@ class PublicController extends Controller{
         if(!empty($email) &&!empty($user) && Hash::check($password, $user->password)){
             $user=\Auth::login($user);
             flash()->success("Logged in successfully");
-            return redirect('/user/');
+            if(\Auth::user()->type=='Admin')
+                return redirect('/user/');
+            else
+                return redirect('/project/') ;
         }
         return view('/public.login');
             
@@ -28,8 +34,8 @@ class PublicController extends Controller{
             flash()->error("Invalid UserNAme or Password");
             return redirect('/public/login');
         }
-        flash()->error("Invalid UserNAme or Password");
-            return redirect('/public/login');
+//        flash()->error("Invalid UserNAme or Password");
+//            return redirect('/public/login');
         
     }
     

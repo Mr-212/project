@@ -1,20 +1,20 @@
 
-
     var app=angular.module('chat');
     app.controller('chatcontroller', function($scope,socket ,message,$http,$timeout, $location,$anchorScroll){
-        var jq = $.noConflict();
+
+        var j=angular.element;
+
+
         $scope.users=[];
         $scope.data=[];
         //$scope.input='';
         //$scope.glued = true;
 
-
-
         //--join char--//
         $scope.joinChat = function(){
-            jq('.chat, .chat1').slideDown();
-            //jq('.chat1').slideDown();
-            jq('.join').hide();
+            $('.chat, .chat1').slideDown();
+            //$('.chat1').slideDown();
+            $('.join').hide();
                   $http.get('/chat/join').success(function(data){
                        // console.log(data);
                         socket.emit('join',data);
@@ -31,8 +31,7 @@
 
         //leave chat--//
         $scope.leaveChat = function(user){
-            jq('.chat, .join').slideUp();
-            //jq().slideUp();
+            $('.chat, .join').slideUp();
             console.log(user)
             socket.emit('leave',user+' has left');
 
@@ -58,7 +57,6 @@
             var value=$scope.input;
             var data= message.msg({value:value});
             $scope.input="";
-
             console.log(data);
         }
         socket.on('chat',function(data){
@@ -68,14 +66,18 @@
 
 
 
-      //<--!jquery-->
-        //jq('.chat').hide();
-        jq('#showchat').on('click',function(){
-            jq('.join').slideDown();
-        })
-        jq('.window').on('click',function(){
-            jq('.chat1').slideToggle();
-        })
+      //<--!$uery-->
+        //$('.chat').hide();
+        $('#showchat').on('click',function(){
+            $('.join').slideDown();
+        });
+        //j('.window').unbind('click');
+        j('.window').off().on('click',function(){
+            //e.stopImmediatePropagation()    //-- another solution for dubble slide
+            j('.chat1').slideToggle();
+
+        });
+
 
 
     });

@@ -11,6 +11,7 @@
                             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                 <tr>
+                                    <th>No</th>
                                     <th>File</th>
                                     <th width="200">Action</th>
 
@@ -18,13 +19,23 @@
                                 </thead>
                                 <tbody>
                                  @if (isset($files))
+                                     <?php $i=0;?>
                                     @foreach($files as $file)
+                                        <?php ++$i;?>
                                         <tr>
-                                            <td>{{($file->name)}}</td>
+                                            <td>{{$i}}</td>
+                                            @if(in_array($file->extention,['jpg','jpeg','JPG', 'TIF' ,'PNG','GIF','JPEG']))
+
+                                            <td><img src="/uploads/{{$file->name}}" style="height: 100px;width: 100px" ;></td>
+                                            @else
+                                                <td>{{($file->name)}}</td>
+                                            @endif
                                             <td>
-                                                <a class='btn btn-primary btn-xs' href="/file/view/{{$file->id}}" ><i class="fa fa-file-picture-o"></i> View</a>
+                                                {{--<a class='btn btn-primary btn-xs' href="/file/view/{{$file->id}}" ><i class="fa fa-file-picture-o"></i> View</a>--}}
                                                 <a class='btn btn-primary btn-xs' href="/file/download/{{$file->id}}" ><i class="fa fa-download"></i></a>
+                                                @if(\Auth::user()->type=='Admin')
                                                 <a class='btn btn-primary btn-xs' href="/file/delete/{{$file->id}}" ><i class="fa fa-times"></i></a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

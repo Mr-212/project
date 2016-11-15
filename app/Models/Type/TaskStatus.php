@@ -10,7 +10,7 @@ class TaskStatus extends Type {
    const EXPIRED =  3;
    
    protected static $records = [
-       SELF::OPEN    =>['id'=>SELF::ADMIN,      'name'=>'Open'      ],
+       SELF::OPEN    =>['id'=>SELF::OPEN,      'name'=>'Open'      ],
        SELF::CLOSED  =>['id'=>SELF::CLOSED,     'name'=>'Closed'    ],
        SELF::EXPIRED =>['id'=>SELF::EXPIRED,    'name'=>'Expired'   ],
    ];

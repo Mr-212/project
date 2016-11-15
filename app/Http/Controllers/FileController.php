@@ -9,8 +9,10 @@ use Symfony\Component\HttpFoundation\File\File;
 
 
 class FileController extends Controller{
-    
 
+    public function __construct(){
+        $this->middleware('admin',['only'=>['getDelete']]);
+    }
     public function getFind($id){
         $attach=Attachments::whereTaskId($id)->get();
         //dd($attach);

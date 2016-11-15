@@ -20,5 +20,11 @@ class BaseModel extends Model
         }
     }
 
+//    public static function getByUser($id){
+//        return $this->query()
+//
+//
+//}
+
 
 }

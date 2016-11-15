@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller{
+
+    public function __construct(){
+        $this->middleware('admin',['except'=>['getProfile','postEdit']]);
+    }
     
     public function getIndex(){
         $user=User::whereCompanyId(\Auth::user()->company_id)->get();
@@ -32,7 +36,7 @@ class UserController extends Controller{
         ]);
     }
     
-    public function postAdd(){
+    public function postAdd(\App\Http\Requests\UserRequest $request){
         $user=new User();
         $user->company_id=\Auth::user()->company->id;
         
@@ -41,7 +45,7 @@ class UserController extends Controller{
         $user->password=Hash::make(Input::get('password'));
         
         $user->save();
-        flash()->success("User has been added successfully");
+        flash()->success("User has been added successfully.");
         return redirect('/user');
     }
     public function getEdit($id){
@@ -56,7 +60,10 @@ class UserController extends Controller{
         ]);
     }
     
-    public function postEdit($id){
+    public function postEdit(\App\Http\Requests\UserRequest $request,$id){
+        if(\Auth::user()->type=='User'){
+            $id=\Auth::user()->id;
+        }
         $user=User::find($id);
         //dd($user->name);
         $user->company_id=\Auth::user()->company->id;
@@ -67,8 +74,8 @@ class UserController extends Controller{
         $user->password=Hash::make(Input::get('password'));
         }
         $user->save();
-        flash()->success("User has been updated successfully");
-        return redirect('/user');
+        flash()->success("User has been updated successfully.");
+        return \Auth::user()->type=='User'? redirect('/user/profile'):redirect('/user');
     }
     
     public function getDelete($id){
@@ -98,7 +105,7 @@ class UserController extends Controller{
         try{        
             $user=  User::find($id);
             $user->delete();
-            flash()->success('Record has been deleted sucessfully');
+            flash()->success('Record has been deleted successfully.');
             return redirect('/user');
         } catch (Exception $ex) {
           flash()->error("There is an error processing your request \n {$ex->getMessage()}");

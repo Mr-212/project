@@ -4,13 +4,25 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Projects;
 use App\Models\Sprints;
+use App\Models\Tasks;
 
 
 
 class SprintController extends Controller{
+
+    public function __construct(){
+        $this->middleware('admin',['except'=>['getIndex','getTasks','getSprint']]);
+    }
     
     public function getIndex(){
+        if(\Auth::user()->type=='User') {
+            $sprint = Sprints::UserSprints(\Auth::user()->id);
+
+            //dd($sprint);
+        }
+        else
         $sprint=Sprints::get();
+
         return view('sprint.index')->with([
            'sprints'  => $sprint,
         ]);
@@ -40,33 +52,29 @@ class SprintController extends Controller{
         //dd($users);
         return view('sprint.add')->with([
             'head'     =>'Add Sprint',
-            'link'     =>'/sprint/add/',
+            'link'     =>'/sprint/add',
             'projects'    =>$projects,
         ]);
     }
-    public function getProfile(){
-        $user=User::find(\Auth::user()->id);
-        //dd($user);
-        return view('/user.adduser')->with([
-            'head'   => "Edit Profile",
-            'user'   =>$user,
-            'link'   =>'/user/edit/'.\Auth::user()->id,
-            'type'   =>'edit',
-        ]);
-    }
-    
-    public function postAdd(){
-        $sprint=new Sprints();
-        //$sprint->company_id=\Auth::user()->company->id;
-        
-        $sprint->name=Input::get('name');
-        $sprint->description=Input::get('description');
-        $sprint->project_id=Input::get('project_id');
 
-        
-        $sprint->save();
-        flash()->success( Input::get('name')." has been added successfully");
-        return redirect('/sprint');
+    
+    public function postAdd(\App\Http\Requests\SprintRequest $request){
+        try {
+            $sprint = new Sprints();
+            //$sprint->company_id=\Auth::user()->company->id;
+
+            $sprint->name = Input::get('name');
+            $sprint->description = Input::get('description');
+            $sprint->project_id = Input::get('project_id');
+
+
+            $sprint->save();
+            flash()->success(Input::get('name') . " has been added successfully");
+            return redirect('/sprint');
+        }catch (\Exception $e){
+            flash()->success($e->getMessage());
+            return redirect('/sprint');
+        }
     }
     public function getEdit($id){
 
@@ -85,7 +93,7 @@ class SprintController extends Controller{
         ]);
     }
     
-    public function postEdit($id){
+    public function postEdit(\App\Http\Requests\SprintRequest $request,$id){
         $sprint=Sprints::find($id);
         //dd($user->name);
         //$user->company_id=\Auth::user()->company->id;

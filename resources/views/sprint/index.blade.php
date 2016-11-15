@@ -3,14 +3,15 @@
 <div class="row">
     <div class="col-lg-12 ">
         <h1 class="page-header">Sprints
-                    
-            
-            <a class="btn btnpd0 btn-labeled btn-success  pull-right" href='/sprint/add'>
-                <span class="btn-label">
-                    <i class="fa fa-plus-circle"></i>
-                </span>
-                Add Sprint
-            </a>
+
+            @if(\Auth::user()->type=='Admin')
+                <a class="btn btnpd0 btn-labeled btn-success  pull-right" href='/sprint/add'>
+                    <span class="btn-label">
+                        <i class="fa fa-plus-circle"></i>
+                    </span>
+                    Add Sprint
+                </a>
+            @endif
            </h1>         
     </div>
 </div>
@@ -23,7 +24,9 @@
                 <table class="table table-striped table-bordered table-hover" id='dataTables'>
                     <thead>
                         <tr>
-                            <th width="65"></th>
+                           @if(\Auth::user()->type=='Admin')
+                            <th width="70"></th>
+                            @endif
                             <th>Name</th>
                             <th>Description</th>
                             <th>Project</th>
@@ -38,17 +41,19 @@
 
 
                         <tr>
+                            @if(\Auth::user()->type=='Admin')
                             <td>
 
                                 <a class="btn btn-primary btn-xs" href="/sprint/edit/{{$sprint->id}}"><i class="fa fa-pencil"></i></a>
                                 <a class="btn btn-danger btn-xs" href='sprint/delete/{{$sprint->id}}' data-toggle='modal' data-target='#modal'><i class="fa fa-times"></i></a>
 
                             </td>
+                            @endif
 
 
                             <td>{{$sprint->name }}</td>
                             <td>{{$sprint->description}}</td>
-                            <td>{{$sprint->project->name}}</td>
+                            <td>{{$sprint->project->name or $sprint->projectname}}</td>
                             <td><a class="btn btn-info" href='/sprint/tasks/{{$sprint->id}}'> <i class="fa fa-folder-o"></i> Tasks</a></td>
                         </tr>
                         @endforeach   

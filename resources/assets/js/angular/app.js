@@ -1,12 +1,16 @@
 
 
-var app = angular.module('chat',['ngRoute','luegg.directives']);
+var app = angular.module('chat',['ngRoute','luegg.directives','countdownTimer','datatables',"ngTable"]);
 
     app.config(['$routeProvider', function($routeProvider) {
+        //$routeProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
         try {
             $routeProvider.when('/chat', {
                 templateUrl: '/partials/chat.blade.php',
                 controller: 'chatcontroller',
+            }).when('/task', {
+                templateUrl: '/task/index.blade.php',
+                controller: 'taskcontroller',
             }).
                 otherwise({
                     redirectTo: '/'

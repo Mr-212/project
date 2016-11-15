@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Input;
 
 
 class CompanyController extends Controller{
+
+    public function __construct(){
+        $this->middleware('admin');
+    }
     
     public function getIndex(){
         $comp=Company::find(\Auth::user()->company_id);
@@ -18,7 +22,7 @@ class CompanyController extends Controller{
         ]);
     }
 
-    public function postEdit(){
+    public function postEdit(\App\Http\Requests\CompanyRequest $request){
         $comp=\Auth::user()->company;
         $comp->name=Input::get('name');
         $comp->phone=Input::get('phone');

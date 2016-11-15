@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Type\User as TypeUser;
 
 class User extends Authenticatable
 {
@@ -38,5 +39,9 @@ class User extends Authenticatable
     //--hasMany fk in task--//
     public function tasks(){
         return $this->hasMany('\App\Models\Tasks');
+    }
+
+    public function getTypeAttribute(){
+        return TypeUser::find($this->user_type)->name;
     }
 }

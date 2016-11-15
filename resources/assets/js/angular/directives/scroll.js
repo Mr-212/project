@@ -6,6 +6,8 @@
 
         //qvar j= $.noConflict();
             return{
+                controller:'chatcontroller',
+
                 scope:{
                     list:'=scrollBottom'
                 },
